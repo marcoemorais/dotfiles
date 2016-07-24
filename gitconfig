@@ -1,0 +1,21 @@
+[user]
+	name = Marco Morais
+	email = marcoemorais@yahoo.com
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+[merge]
+	tool = vimdiff
+[alias]
+    cb  = checkout -b
+    b   = branch
+    d   = diff
+    fu  = fetch upstream
+    l   = log -n 40 --pretty=oneline
+    pm  = push -u origin +master
+    por = push -u origin
+    pup = push -u upstream
+    ri  = rebase -i
+    ru  = rebase upstream/master
+    s   = status
+    su  = submodule update --init --recursive
