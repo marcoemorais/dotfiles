@@ -134,7 +134,7 @@ augroup end
 " nnoremap <silent> TT :TlistToggle<CR>
 
 " --> for tagbar plugin
-"  cd ~/.vim/bundle && git clone git://github.com/majutsushi/tagbar
+" cd ~/.vim/bundle && git clone git://github.com/majutsushi/tagbar
 let g:tagbar_width = 100
 nmap TB :TagbarToggle<CR>
 
@@ -176,8 +176,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 "---> Vim-markdown plugin
-" cd ~/.vim/bundle
-" git clone https://github.com/plasticboy/vim-markdown.git
+" cd ~/.vim/bundle && git clone https://github.com/plasticboy/vim-markdown.git
 let g:vim_markdown_folding_disabled = 1
 
 " ---> navigating window splits
