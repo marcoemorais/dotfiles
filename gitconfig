@@ -8,14 +8,17 @@
 	tool = vimdiff
 [alias]
     cb  = checkout -b
+    cl  = config --list
     b   = branch
     d   = diff
     fu  = fetch upstream
+    fo  = fetch origin
     l   = log -n 40 --pretty=oneline
     pm  = push -u origin +master
     por = push -u origin
     pup = push -u upstream
     ri  = rebase -i
     ru  = rebase upstream/master
+    ro  = rebase origin/master
     s   = status
     su  = submodule update --init --recursive

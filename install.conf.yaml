@@ -14,4 +14,6 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [ln -sf ~/.ssh/github.id_rsa ~/.ssh/id_rsa]
+  - [ln -sf ~/.ssh/github.id_rsa.pub ~/.ssh/id_rsa.pub]
 
