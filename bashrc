@@ -46,7 +46,7 @@ alias dss='diff --side-by-side --suppress-common-lines --width 200'
 alias cf='clang-format -style=file '
 alias hn='hostname'
 alias essh='eval "$(ssh-agent -s)"'
-alias assh='ssh-add ~/.ssh/id_rsa'
+alias assh='ssh-add ~/.ssh/github.id_rsa'
 
 # development
 alias mktags='ctags --exclude=.tox --exclude=.venv --exclude=build -f .tags -R .'
