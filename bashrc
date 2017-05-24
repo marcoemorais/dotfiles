@@ -21,6 +21,9 @@ fi
 if echo $PATH | grep -vq $HOME/bin ; then
     export PATH=$HOME/bin:$PATH
 fi
+if echo $MANPATH | grep -vq $HOME/share/man ; then
+    export MANPATH=$HOME/share/man:$MANPATH
+fi
 
 # standard command aliases
 alias src='. ~/.bashrc'
@@ -34,6 +37,7 @@ alias fcc='find . -name "*.cc" '
 alias fcpp='find . -name "*.cpp" '
 alias fd='find . -type d '
 alias ff='find . -type f '
+alias fgo='find . -name "*.go" '
 alias fh='find . -name "*.h" '
 alias fhh='find . -name "*.hh" '
 alias fj='find . -name "*.java" '
@@ -66,8 +70,19 @@ else
     PS1='\[\e[1;34m\]\u@\h \W\[\e[0m\]\$ '
 fi
 
+# go
+if echo $PATH | grep -vq go ; then
+    export PATH=$PATH:$(go env GOPATH)/bin
+fi
+export GOPATH=$(go env GOPATH)
+
 # brew
-export GNUBINPATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+if echo $PATH | grep -vq gnubin ; then
+    export PATH=/usr/local/opt/gnu-tar/libexec/gnubin:$PATH
+fi
+if echo $MANPATH | grep -vq gnuman ; then
+    export MANPATH=/usr/local/opt/gnu-tar/libexec/gnuman:$MANPATH
+fi
 
 # check and enable the scl
 if [ -f /opt/rh/python27/enable ] ; then
