@@ -215,8 +215,12 @@ let g:ctrlp_cmd = 'CtrlP'
 "
 " Good tutorial https://github.com/fatih/vim-go-tutorial
 "
+" :GoInstallBinaries    install toolchain in a go workspace
+"
 " :GoBuild              go build
 " :GoDoc                go doc
+" :GoDocBrowser         open doc in browser
+" :GoDef                open def
 " :GoInstall            go install
 " :GoRun                go run
 " :GoTest               go test
@@ -233,6 +237,7 @@ let g:go_list_type = "quickfix"     " Make all windows of type quickfix.
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>d  <Plug>(go-doc)
 autocmd FileType go nmap <leader>dv <Plug>(go-doc-vertical)
+autocmd FileType go nmap g]         <Plug>(go-def)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
