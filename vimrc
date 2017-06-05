@@ -72,6 +72,8 @@ filetype plugin indent on
 " :saveas               save the current buffer under a new filename
 " :cd -                 return to previous directory
 " :r !<command>         insert the output from <command> into the current file
+noremap <leader>cd :cd %:p:h<CR>:pwd<CR>  " Change CWD to current file.
+noremap <leader>-  :cd -<CR>:pwd<CR>  " Change CWD to previous CWD.
 
 
 " -----------------------------------------------------------------------------
@@ -206,6 +208,7 @@ let g:vim_markdown_folding_disabled = 1
 " Ctrl-X                open file in horizontal split
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'rw'  " Begin finding from CWD.
 
 
 " -----------------------------------------------------------------------------
