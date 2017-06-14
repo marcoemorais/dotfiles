@@ -51,9 +51,12 @@ alias cf='clang-format -style=file '
 alias hn='hostname'
 alias essh='eval "$(ssh-agent -s)"'
 alias assh='ssh-add ~/.ssh/github.id_rsa'
+alias drmc='docker rm $(docker ps --all --quiet --filter status=exited)'
+alias gopwd='export GOPATH=$(pwd)'
 
 # development
 alias mktags='ctags --exclude=.tox --exclude=.venv --exclude=build -f .tags -R .'
+alias mkgtags='gotags -f .tags -R .'
 
 # pretty print
 alias jsonpp='python -mjson.tool'
