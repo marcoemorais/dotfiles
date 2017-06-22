@@ -53,6 +53,8 @@ alias essh='eval "$(ssh-agent -s)"'
 alias assh='ssh-add ~/.ssh/github.id_rsa'
 alias drmc='docker rm $(docker ps --all --quiet --filter status=exited)'
 alias gopwd='export GOPATH=$(pwd)'
+alias goenv='echo export GOPATH=$(pwd) >> .envrc; direnv allow .;'
+alias ctop='ctop -i'
 
 # development
 alias mktags='ctags --exclude=.tox --exclude=.venv --exclude=build -f .tags -R .'
@@ -91,4 +93,8 @@ fi
 if [ -f /opt/rh/python27/enable ] ; then
     source /opt/rh/python27/enable
 fi
+
+# direnv: environment switcher
+# https://github.com/direnv/direnv
+eval "$(direnv hook bash)"
 
