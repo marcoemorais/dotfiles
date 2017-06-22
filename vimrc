@@ -157,7 +157,7 @@ let g:pydoc_open_cmd = 'vsplit'
 " -----------------------------------------------------------------------------
 " cd ~/.vim/bundle && git clone https://github.com/majutsushi/tagbar
 "
-let g:tagbar_width = 100
+let g:tagbar_width = 60
 nmap TB :TagbarToggle<CR>
 
 
