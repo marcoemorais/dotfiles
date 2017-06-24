@@ -73,7 +73,7 @@ alias ll='ls -lG '
 alias py='ping -c 1 www.yahoo.com'
 alias src='. ~/.bashrc'
 alias ssh='TERM=xterm ssh'
-alias tsdu='date -ur '
+alias tsd='date -ur '
 alias xg='xargs grep --color '
 alias xmlpp='xmllint --format -'
 

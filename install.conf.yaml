@@ -5,14 +5,18 @@
 - clean: ['~']
 
 - link:
-    ~/.bash_profile: bash_profile
-    ~/.bashrc: bashrc
-    ~/.gitconfig: gitconfig
-    ~/.gitignore_global: gitignore_global
+    ~/.bash_profile: bash/bash_profile
+    ~/.bashrc: bash/bashrc
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore_global: git/gitignore_global
     ~/.ssh/config: ssh/config
-    ~/.tmux.conf: tmux.conf
-    ~/.vimrc: vimrc
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.vimrc: vim/vimrc
+    ~/bin/setup-go-workspace.sh: bin/setup-go-workspace.sh
+    ~/bin/setup-go.sh: bin/setup-go.sh
+    ~/bin/setup-vim.sh: bin/setup-vim.sh
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - mkdir -p ~/bin
 
