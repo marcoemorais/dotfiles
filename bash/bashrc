@@ -85,10 +85,12 @@ else
 fi
 
 # Golang.
-if echo $PATH | grep -vq go ; then
-    export PATH=$PATH:$(go env GOPATH)/bin
+if [ -d $HOME/go ] ; then
+    export GOPATH=$HOME/go
+    if echo $PATH | grep -vq $GOPATH ; then
+        export PATH=$PATH:$GOPATH/bin
+    fi
 fi
-export GOPATH=$(go env GOPATH)
 
 # MacOS.
 if uname | grep -vq "Darwin" ; then
