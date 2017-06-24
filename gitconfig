@@ -21,6 +21,7 @@
     ru  = rebase upstream/master
     ro  = rebase origin/master
     s   = status
+    ss  = show staging
     su  = submodule update --init --recursive
 [url "git@github.com:"]
 	insteadOf = https://github.com/
