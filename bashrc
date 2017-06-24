@@ -1,20 +1,20 @@
 # .bashrc
 
-# Source global definitions
+# Source global definitions.
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# vi key mappings in shell
+# Set vi key mappings in shell.
 set -o vi
 
-# make sure tab-completion works
-bind '"\C-i":complete'
+# Make sure tab-completion works.
+ bind '"\C-i":complete'
 
-# put commands executed from history on command line before executing
+# Put commands executed from history on command line before executing.
 shopt -s histverify
 
-# User environment variables
+# User environment variables.
 if echo $PATH | grep -vq /usr/local/bin ; then
     export PATH=/usr/local/bin:$PATH
 fi
@@ -25,73 +25,88 @@ if echo $MANPATH | grep -vq $HOME/share/man ; then
     export MANPATH=$HOME/share/man:$MANPATH
 fi
 
-# standard command aliases
-alias src='. ~/.bashrc'
-alias ll='ls -lG '
-alias la='ls -laG '
-alias lh='ls -lhG '
+# Functions.
+function assh() {
+    # Add a key to ssh-agent.
+    ssh-add ${1:-~/.ssh/github.id_rsa}
+}
+
+function ft() {
+    # Find files by type.
+    find . -type ${1:f}
+}
+
+function fx() {
+    # Find files by extension passed as input.
+    find . -iregex ".*\.${1:txt}$"
+}
+
+function fxg() {
+    # Find files by extension and grep.
+    find . -iregex ".*\.${1:txt}$" | xargs grep --color "${2:-.}"
+}
+
+function tlx() {
+    # Graphically display directories.
+    # Add (-f) to display full path for each listing.
+    tree -aL ${1:-99} ${2:-}
+}
+
+# Aliases.
+alias cf='clang-format -style=file '
+alias ctop='ctop -i'
+alias ctag='ctags --exclude=.tox --exclude=.venv --exclude=build -f .tags -R .'
+alias dts='date -u +%s'
+alias drmc='docker rm $(docker ps --all --quiet --filter status=exited)'
+alias dss='diff --side-by-side --suppress-common-lines --width 200'
+alias essh='eval "$(ssh-agent -s)"'
 alias g='grep --color '
 alias gi='grep --color -i '
-alias xg='xargs grep --color '
-alias fcc='find . -name "*.cc" '
-alias fcpp='find . -name "*.cpp" '
-alias fd='find . -type d '
-alias ff='find . -type f '
-alias fgo='find . -name "*.go" '
-alias fh='find . -name "*.h" '
-alias fhh='find . -name "*.hh" '
-alias fj='find . -name "*.java" '
-alias fjar='find . -name "*.jar" '
-alias fp='find . -name "*.proto" '
-alias fpy='find . -name "*.py" '
-alias py='ping -c 1 www.yahoo.com'
-alias ssh='TERM=xterm ssh'
-alias dss='diff --side-by-side --suppress-common-lines --width 200'
-alias cf='clang-format -style=file '
-alias hn='hostname'
-alias essh='eval "$(ssh-agent -s)"'
-alias assh='ssh-add ~/.ssh/github.id_rsa'
-alias drmc='docker rm $(docker ps --all --quiet --filter status=exited)'
+alias gocd='cd $GOPATH'
+alias goenv='echo export GOPATH=$(pwd) >> .envrc && direnv allow .'
 alias gopwd='export GOPATH=$(pwd)'
-alias goenv='echo export GOPATH=$(pwd) >> .envrc; direnv allow .;'
-alias ctop='ctop -i'
-
-# development
-alias mktags='ctags --exclude=.tox --exclude=.venv --exclude=build -f .tags -R .'
-alias mkgtags='gotags -f .tags -R .'
-
-# pretty print
-alias jsonpp='python -mjson.tool'
+alias gotag='gotags -f .tags -R .'
+alias jsonpp='python -msjson.tool'
+alias la='ls -lGa '
+alias lh='ls -lGh '
+alias ll='ls -lG '
+alias py='ping -c 1 www.yahoo.com'
+alias src='. ~/.bashrc'
+alias ssh='TERM=xterm ssh'
+alias tsdu='date -ur '
+alias xg='xargs grep --color '
 alias xmlpp='xmllint --format -'
 
-# time
-alias datelocal="date '+%s'"
-alias dateutc="date -u '+%s'"
-
-# set prompt text to blue and prompt to black
+# Set prompt text to blue and prompt to black.
 if [ "x$YROOT_NAME" != "x" ]; then
     PS1='\[\e[1;34m\]\u@\h ($YROOT_NAME) \W\[\e[0m\]\$ '
 else
     PS1='\[\e[1;34m\]\u@\h \W\[\e[0m\]\$ '
 fi
 
-# go
+# Golang.
 if echo $PATH | grep -vq go ; then
     export PATH=$PATH:$(go env GOPATH)/bin
 fi
 export GOPATH=$(go env GOPATH)
 
-# brew
-if echo $PATH | grep -vq gnubin ; then
-    export PATH=/usr/local/opt/gnu-tar/libexec/gnubin:$PATH
-fi
-if echo $MANPATH | grep -vq gnuman ; then
-    export MANPATH=/usr/local/opt/gnu-tar/libexec/gnuman:$MANPATH
+# MacOS.
+if uname | grep -vq "Darwin" ; then
+    # Add some gnu utilities pulled in via brew.
+    if echo $PATH | grep -vq gnubin ; then
+        export PATH=/usr/local/opt/gnu-tar/libexec/gnubin:$PATH
+    fi
+    if echo $MANPATH | grep -vq gnuman ; then
+        export MANPATH=/usr/local/opt/gnu-tar/libexec/gnuman:$MANPATH
+    fi
 fi
 
-# check and enable the scl
-if [ -f /opt/rh/python27/enable ] ; then
-    source /opt/rh/python27/enable
+# Linux.
+if uname | grep -vq "Linux" ; then
+    # Check and enable the scl.
+    if [ -f /opt/rh/python27/enable ] ; then
+        source /opt/rh/python27/enable
+    fi
 fi
 
 # direnv: environment switcher
