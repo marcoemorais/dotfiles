@@ -236,13 +236,17 @@ map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 let g:go_list_type = "quickfix"     " Make all windows of type quickfix.
+let g:go_fmt_command = "goimports"  " Run goimports on autosave.
 " Aliases for running subcommands.
+autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>d  <Plug>(go-doc)
 autocmd FileType go nmap <leader>dv <Plug>(go-doc-vertical)
 autocmd FileType go nmap g]         <Plug>(go-def)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
+" :GoDocV [args] will open GoDoc in vertical split.
+command! -nargs=* -range -complete=customlist,go#package#Complete GoDocV call go#doc#Open('new', 'vsplit', <f-args>)
 
 
 " -----------------------------------------------------------------------------
