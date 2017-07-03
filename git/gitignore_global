@@ -1,2 +1,8 @@
+*.egg-info
+.envrc
+.graveyard
+*.pyc
 *.swp
 .tags
+.tox
+.venv
