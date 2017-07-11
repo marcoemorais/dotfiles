@@ -1,11 +1,11 @@
 [user]
-	name = Marco Morais
-	email = marcoemorais@yahoo.com
+    name = Marco Morais
+    email = marcoemorais@yahoo.com
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore_global
+    editor = vim
+    excludesfile = ~/.gitignore_global
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [alias]
     cb  = checkout -b
     cl  = config --list
@@ -24,4 +24,9 @@
     ss  = show staging
     su  = submodule update --init --recursive
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+    insteadOf = https://github.com/
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f

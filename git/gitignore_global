@@ -6,3 +6,4 @@
 .tags
 .tox
 .venv
+package-lock.json
