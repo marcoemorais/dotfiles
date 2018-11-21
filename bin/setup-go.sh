@@ -25,4 +25,3 @@ function install() {
 export GOPATH=$HOME/go
 install direnv/direnv
 install jstemmer/gotags
-go get github.com/constabulary/gb/...

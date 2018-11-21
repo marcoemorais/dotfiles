@@ -30,18 +30,14 @@ let mapleader = ","
 " -----------------------------------------------------------------------------
 " ./.tags will search for file named '.tags' in directory where current file is
 " .tags will search file file named '.tags' in the current directory
-"
 :set tags=./.tags,.tags,~/.tags
 
 
 " -----------------------------------------------------------------------------
 " pathogen
-" -----------------------------------------------------------------------------
-" Install:
-" mkdir -p ~/.vim/autoload ~/.vim/bundle; \
-" curl -Sso ~/.vim/autoload/pathogen.vim --location \
-"     https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 "
+" https://tpo.pe/pathogen.vim
+" -----------------------------------------------------------------------------
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
@@ -125,47 +121,33 @@ noremap <leader>-  :cd -<CR>:pwd<CR>  " Change CWD to previous CWD.
 
 " -----------------------------------------------------------------------------
 " manpage plugin
-" -----------------------------------------------------------------------------
-" cd ~/.vim/bundle && git clone https://github.com/vim-utils/vim-man.git
 "
+" https://github.com/vim-utils/vim-man.git
+" -----------------------------------------------------------------------------
 " :Man [topic]          open manpage in horizontal split
 " :Vman [topic]         open manpage in vertical split
 
 
 " -----------------------------------------------------------------------------
-" pydoc plugin
+" pydoc
 " -----------------------------------------------------------------------------
-" Install:
-" mkdir -p ~/.vim/ftplugin; \
-" curl -Sso ~/.vim/ftplugin/python_pydoc.vim --location \
-"   https://raw.githubusercontent.com/fs111/pydoc.vim/master/ftplugin/python_pydoc.vim
-"
-" K                     invoke pydoc on the word under the cursor
-" :Pydoc [a.b.c]        invoke pydoc on module a.b.c
-" :PydocSearch [term]   invoke pydoc search for 'term'
-" :Pydoc modules        list all available modules
-" :Pydoc topics         list all topics in documentation
-" :Pydoc keywords       list all language keywords
-" don't highlight search term when displaying documentation
-let g:pydoc_highlight=0
-" open pydoc files in vertical split
-let g:pydoc_open_cmd = 'vsplit'
+nnoremap <buffer> H :<C-u>execute "!pydoc3 " . expand("<cword>")<CR>
 
 
 " -----------------------------------------------------------------------------
 " tagbar plugin
-" -----------------------------------------------------------------------------
-" cd ~/.vim/bundle && git clone https://github.com/majutsushi/tagbar
 "
+" https://github.com/majutsushi/tagbar.git
+" -----------------------------------------------------------------------------
 let g:tagbar_width = 60
 nmap TB :TagbarToggle<CR>
 
 
 " -----------------------------------------------------------------------------
 " nerdtree plugin
-" -----------------------------------------------------------------------------
-" cd ~/.vim/bundle && git clone https://github.com/scrooloose/nerdtree.git
 "
+" https://github.com/scrooloose/nerdtree.git
+" -----------------------------------------------------------------------------
 " ?                     toggles help in the NERD_tree window
 " i                     open selected file in split
 " s                     open selected file in vsplit
@@ -180,30 +162,18 @@ nnoremap <silent> NT :NERDTreeToggle<CR>
 
 
 " -----------------------------------------------------------------------------
-" pig syntax highlighting
-" -----------------------------------------------------------------------------
-" cd ~/.vim/bundle && git clone https://github.com/motus/pig.vim.git
-
-
-" -----------------------------------------------------------------------------
-" protobuf syntax highlighting
-" -----------------------------------------------------------------------------
-" cd ~/.vim/bundle && git clone https://github.com/uarun/vim-protobuf.git
-
-
-" -----------------------------------------------------------------------------
 " markdown plugin
-" -----------------------------------------------------------------------------
-" cd ~/.vim/bundle && git clone https://github.com/plasticboy/vim-markdown.git
 "
+" https://github.com/plasticboy/vim-markdown.git
+" -----------------------------------------------------------------------------
 let g:vim_markdown_folding_disabled = 1
 
 
 " -----------------------------------------------------------------------------
 " ctrlp plugin
-" -----------------------------------------------------------------------------
-" cd ~/.vim/bundle && git clone https://github.com/kien/ctrlp.vim.git
 "
+" https://github.com/ctrlpvim/ctrlp.vim.git
+" -----------------------------------------------------------------------------
 " Ctrl-V                open file in vertical split
 " Ctrl-X                open file in horizontal split
 let g:ctrlp_map = '<c-p>'
@@ -213,8 +183,9 @@ let g:ctrlp_working_path_mode = 'rw'  " Begin finding from CWD.
 
 " -----------------------------------------------------------------------------
 " go plugin
+"
+" https://github.com/fatih/vim-go.git
 " -----------------------------------------------------------------------------
-" cd ~/.vim/bundle && git clone https://github.com/fatih/vim-go.git
 "
 " Good tutorial https://github.com/fatih/vim-go-tutorial
 "

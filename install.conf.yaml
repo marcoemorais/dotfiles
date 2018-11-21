@@ -15,6 +15,7 @@
     ~/bin/setup-go-workspace.sh: bin/setup-go-workspace.sh
     ~/bin/setup-go.sh: bin/setup-go.sh
     ~/bin/setup-vim.sh: bin/setup-vim.sh
+    ~/bin/setup-brew.sh: bin/setup-brew.sh
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

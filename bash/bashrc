@@ -9,7 +9,7 @@ fi
 set -o vi
 
 # Make sure tab-completion works.
- bind '"\C-i":complete'
+bind '"\C-i":complete'
 
 # Put commands executed from history on command line before executing.
 shopt -s histverify
@@ -28,7 +28,7 @@ fi
 # Functions.
 function assh() {
     # Add a key to ssh-agent.
-    ssh-add ${1:-~/.ssh/github.id_rsa}
+    ssh-add ${1:-~/.ssh/*_id_rsa}
 }
 
 function ft() {

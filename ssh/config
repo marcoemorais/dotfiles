@@ -1,8 +1,13 @@
 
 User marcomorais
 
+Host *
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/marcoemorais_at_yahoo_dot_com_id_rsa
+
 Host github.com
     HostName github.com
     User git
-    IdentityFile ~/.ssh/github.id_rsa
+    IdentityFile ~/.ssh/marcoemorais_at_yahoo_dot_com_id_rsa
 
