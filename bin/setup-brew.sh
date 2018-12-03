@@ -5,8 +5,10 @@
 brew install \
     ctags \
     go \
+    htop \
     jq \
-    python@3 \
+    pyenv \
     tmux \
-    tree
+    tree \
+    zlib
 

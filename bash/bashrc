@@ -117,3 +117,7 @@ fi
 # https://github.com/direnv/direnv
 eval "$(direnv hook bash)"
 
+# pyenv: python switcher
+# https://github.com/pyenv/pyenv
+eval "$(pyenv init -)"
+
