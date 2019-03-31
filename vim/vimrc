@@ -158,6 +158,7 @@ nmap TB :TagbarToggle<CR>
 " A                     toggle whether nerd tree window is maximized
 let g:NERDTreeWinSize = 60
 nnoremap <silent> NT :NERDTreeToggle<CR>
+let g:NERDTreeDirArrows=0
 
 
 " -----------------------------------------------------------------------------
