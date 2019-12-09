@@ -43,7 +43,7 @@ function fx() {
 
 function fxg() {
     # Find files by extension and grep.
-    find . -iregex ".*\.${1:txt}$" | xargs grep --color "${2:-.}"
+    find . -iregex ".*\.${1:txt}$" -exec grep -H --color "${2:-.}" {} \;
 }
 
 function tlx() {
