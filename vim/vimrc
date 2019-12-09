@@ -158,6 +158,7 @@ nmap TB :TagbarToggle<CR>
 " A                     toggle whether nerd tree window is maximized
 let g:NERDTreeWinSize = 60
 nnoremap <silent> NT :NERDTreeToggle<CR>
+let g:NERDTreeDirArrows=0
 
 
 " -----------------------------------------------------------------------------
@@ -247,6 +248,27 @@ noremap <silent> NCC :set colorcolumn=""<CR>
 " remove trailing whitespace from file on save
 " -----------------------------------------------------------------------------
 autocmd BufWritePre * :%s/\s\+$//e
+
+
+" -----------------------------------------------------------------------------
+" json
+" -----------------------------------------------------------------------------
+autocmd BufNewFile,BufReadPost *.json :set filetype=json
+autocmd FileType json setlocal ts=2 sts=2 sw=2 expandtab
+
+
+" -----------------------------------------------------------------------------
+" yaml
+" -----------------------------------------------------------------------------
+autocmd BufNewFile,BufReadPost *.yaml,*.yml :set filetype=yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+
+" -----------------------------------------------------------------------------
+" java
+" -----------------------------------------------------------------------------
+autocmd BufNewFile,BufReadPost *.java :set filetype=java
+autocmd FileType java setlocal ts=4 sts=4 sw=4 expandtab
 
 
 " -----------------------------------------------------------------------------
