@@ -3,7 +3,7 @@
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-NERDTREE_TAG=6.3.0
+NERDTREE_TAG=6.7.15
 mkdir -p ~/.vim/bundle && \
     git clone --recursive -q https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree --branch $NERDTREE_TAG
 
@@ -31,7 +31,7 @@ VIM_MARKDOWN_TAG=master
 mkdir -p ~/.vim/bundle && \
     git clone --recursive -q https://github.com/plasticboy/vim-markdown.git ~/.vim/bundle/vim-markdown --branch $VIM_MARKDOWN_TAG
 
-VIM_GO_TAG=v1.21
+VIM_GO_TAG=v1.23
 mkdir -p ~/.vim/bundle && \
     git clone --recursive -q https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go --branch $VIM_GO_TAG
 
