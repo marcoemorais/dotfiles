@@ -1,288 +1,80 @@
 " -----------------------------------------------------------------------------
-" general settings
+" Use utf-8.
+" -----------------------------------------------------------------------------
+set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
+
+" -----------------------------------------------------------------------------
+" Use spaces instead of tabs.
 " -----------------------------------------------------------------------------
 :set ch=4
 :set tabstop=4
 :set shiftwidth=4
 :set expandtab
-:set nohlsearch
-:set noincsearch
+
+" -----------------------------------------------------------------------------
+" Indenting.
+" -----------------------------------------------------------------------------
+:set autoindent
+:set smartindent
+:set cindent
+
+" -----------------------------------------------------------------------------
+" Line numbers.
+" -----------------------------------------------------------------------------
 :set number
-:set ruler
-:set showmatch
-:set matchtime=8
-:set matchpairs=(:),{:},[:],<:>
-:set showfulltag
-:filetype off
-" adding path allows gf to find and open files under cursor
-:set path=**,/usr/include/**,/usr/local/include/**,~/include/**
-
 
 " -----------------------------------------------------------------------------
-" leader
+" Search path used by `gf`.
 " -----------------------------------------------------------------------------
-let mapleader = ","
-:set showcmd                " Show leader in lower right corner when pressed.
-
+:set path=**,/usr/include/**,/usr/local/include/**
 
 " -----------------------------------------------------------------------------
-" tag files
-" -----------------------------------------------------------------------------
-" ./.tags will search for file named '.tags' in directory where current file is
-" .tags will search file file named '.tags' in the current directory
-:set tags=./.tags,.tags,~/.tags
-
-
-" -----------------------------------------------------------------------------
-" pathogen
-"
-" https://tpo.pe/pathogen.vim
-" -----------------------------------------------------------------------------
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
-
-
-" -----------------------------------------------------------------------------
-" tag navigation
-" -----------------------------------------------------------------------------
-" CTRL-]                jump to first matching tag based on text under cursor
-" :ts [ident]           list all tags matching ident (regex start with '/')
-"                       use <TAB> completion to scroll through possible matches
-" g]                    like :ts except shows list based on text under cursor
-" CTRL-T                jump back to previous tag
-" :tags                 bring up list of the entire tag stack
-" :find [ident]         find and open file matching ident (uses path)
-" gf                    find and open file matching text under cursor,
-" :n [ident]            find and open first file matching ident
-" :vimgrep [pattern] **/*.{extension}       use :cn, :cp to navigate fwd/bwd
-" [[ or ]]              go to previous or next class definition
-
-
-" -----------------------------------------------------------------------------
-" file navigation
-" -----------------------------------------------------------------------------
-" :e#                   open previous file being editted in current window
-" :buffers              list all buffers
-" :buffer [N]           open the file number N from the list returned by :buffers
-" :saveas               save the current buffer under a new filename
-" :cd -                 return to previous directory
-" :r !<command>         insert the output from <command> into the current file
-noremap <leader>cd :cd %:p:h<CR>:pwd<CR>  " Change CWD to current file.
-noremap <leader>-  :cd -<CR>:pwd<CR>  " Change CWD to previous CWD.
-
-
-" -----------------------------------------------------------------------------
-" make
-" -----------------------------------------------------------------------------
-" :cfirst               first error
-" :cn                   next error
-" :cp                   previous error
-" :clast                last error
-" :cc                   compiler message for current error
-" :cl                   list all errors
-
-
-" -----------------------------------------------------------------------------
-" folds
-" -----------------------------------------------------------------------------
-" zR                    open all folds in the file
-" [{                    jump to previous enclosing { in current code block
-" ]}                    jump to next enclosing { in current code block
-" <CTRL-V><TAB>         inserts hard tabs (must be in INSERT mode)
-" *                     to search for text matching the text under the cursor
-
-
-" -----------------------------------------------------------------------------
-" macros
-" -----------------------------------------------------------------------------
-" qd                    start recording to register d
-" ...                   your complex series of commands
-" q                     stop recording
-" @d                    execute your macro
-" N@d                   execute your macro N times
-
-
-" -----------------------------------------------------------------------------
-" copy-paste registers
-" -----------------------------------------------------------------------------
-" "xy                   to copy into register x where x is the name of register
-" "x(p|P)               to paste from register x after or before current position
-" :reg                  lists the contents of copy-paste registers
-
-
-" -----------------------------------------------------------------------------
-" mark registers
-" -----------------------------------------------------------------------------
-" mx                    to set a mark at register x where x is the name of register
-" `x                    to move to mark at register x
-" :marks                lists the contents of mark registers
-
-
-" -----------------------------------------------------------------------------
-" manpage plugin
-"
-" https://github.com/vim-utils/vim-man.git
-" -----------------------------------------------------------------------------
-" :Man [topic]          open manpage in horizontal split
-" :Vman [topic]         open manpage in vertical split
-
-
-" -----------------------------------------------------------------------------
-" pydoc
-" -----------------------------------------------------------------------------
-
-
-" -----------------------------------------------------------------------------
-" tagbar plugin
-"
-" https://github.com/majutsushi/tagbar.git
-" -----------------------------------------------------------------------------
-let g:tagbar_width = 60
-nmap TB :TagbarToggle<CR>
-
-
-" -----------------------------------------------------------------------------
-" nerdtree plugin
-"
-" https://github.com/scrooloose/nerdtree.git
-" -----------------------------------------------------------------------------
-" ?                     toggles help in the NERD_tree window
-" i                     open selected file in split
-" s                     open selected file in vsplit
-" O                     recursively open children of current parent
-" X                     recursively open children of current parent
-" e                     open the directory in a file split
-" cd                    change CWD to current parent
-" r                     refresh the current directory
-" A                     toggle whether nerd tree window is maximized
-let g:NERDTreeWinSize = 60
-nnoremap <silent> NT :NERDTreeToggle<CR>
-let g:NERDTreeDirArrows=0
-
-
-" -----------------------------------------------------------------------------
-" markdown plugin
-"
-" https://github.com/plasticboy/vim-markdown.git
-" -----------------------------------------------------------------------------
-let g:vim_markdown_folding_disabled = 1
-
-
-" -----------------------------------------------------------------------------
-" ctrlp plugin
-"
-" https://github.com/ctrlpvim/ctrlp.vim.git
-" -----------------------------------------------------------------------------
-" Ctrl-V                open file in vertical split
-" Ctrl-X                open file in horizontal split
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'rw'  " Begin finding from CWD.
-
-
-" -----------------------------------------------------------------------------
-" go plugin
-"
-" https://github.com/fatih/vim-go.git
-" -----------------------------------------------------------------------------
-"
-" Good tutorial https://github.com/fatih/vim-go-tutorial
-"
-" :GoInstallBinaries    install toolchain in a go workspace
-"
-" :GoBuild              go build
-" :GoDoc                go doc
-" :GoDocBrowser         open doc in browser
-" :GoDef                open def
-" :GoInstall            go install
-" :GoRun                go run
-" :GoTest               go test
-" :GoDrop               drop import
-" :GoImport             add import
-" :GoCoverageBrowser    open coverage report in browser
-set autowrite                       " Auto-Write file before invoking go build.
-" Shortcuts to make navigating the quickfix list easier.
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
-let g:go_list_type = "quickfix"     " Make all windows of type quickfix.
-let g:go_fmt_command = "goimports"  " Run goimports on autosave.
-" Aliases for running subcommands.
-autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>d  <Plug>(go-doc)
-autocmd FileType go nmap <leader>dv <Plug>(go-doc-vertical)
-autocmd FileType go nmap g]         <Plug>(go-def)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
-" :GoDocV [args] will open GoDoc in vertical split.
-command! -nargs=* -range -complete=customlist,go#package#Complete GoDocV call go#doc#Open('new', 'vsplit', <f-args>)
-
-
-" -----------------------------------------------------------------------------
-" navigating window splits
+" Navigating window splits.
 " -----------------------------------------------------------------------------
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-
 " -----------------------------------------------------------------------------
-" unicode, utf8
-" -----------------------------------------------------------------------------
-" ga and g8 are useful to see the escape code for the char under the cursor.
-" ga shows value in decimal, hex, octal.
-" g8 shows the utf8 code  eg (e2 80 9c)
-
-
-" -----------------------------------------------------------------------------
-" show line length ruler
+" Line length ruler.
 " -----------------------------------------------------------------------------
 noremap <silent> CC :set colorcolumn=80<CR>
 noremap <silent> NCC :set colorcolumn=""<CR>
 
+" -----------------------------------------------------------------------------
+" Set current working directory to same as current open file.
+" -----------------------------------------------------------------------------
+"set autochdir
 
 " -----------------------------------------------------------------------------
-" remove trailing whitespace from file on save
+" Turn on syntax highlighting.
+" -----------------------------------------------------------------------------
+syntax on
+
+" -----------------------------------------------------------------------------
+" Use pathogen to manage plugins.
+" -----------------------------------------------------------------------------
+execute pathogen#infect()
+
+" -----------------------------------------------------------------------------
+" Treat .cc as cpp.
+" -----------------------------------------------------------------------------
+autocmd BufEnter *.cc :setlocal filetype=cpp
+
+" -----------------------------------------------------------------------------
+" Remove trailing whitespace from file on save.
 " -----------------------------------------------------------------------------
 autocmd BufWritePre * :%s/\s\+$//e
 
+" -----------------------------------------------------------------------------
+" Load indent file baseed on filetype detection.
+" -----------------------------------------------------------------------------
+filetype plugin indent on
 
 " -----------------------------------------------------------------------------
-" json
+" Use Ctrl-G to toggle NERDTree.
 " -----------------------------------------------------------------------------
-autocmd BufNewFile,BufReadPost *.json :set filetype=json
-autocmd FileType json setlocal ts=2 sts=2 sw=2 expandtab
-
-
-" -----------------------------------------------------------------------------
-" yaml
-" -----------------------------------------------------------------------------
-autocmd BufNewFile,BufReadPost *.yaml,*.yml :set filetype=yaml
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-
-" -----------------------------------------------------------------------------
-" java
-" -----------------------------------------------------------------------------
-autocmd BufNewFile,BufReadPost *.java :set filetype=java
-autocmd FileType java setlocal ts=4 sts=4 sw=4 expandtab
-
-
-" -----------------------------------------------------------------------------
-" miscellaneous
-" -----------------------------------------------------------------------------
-
-" show nonprinting characters
-" set list
-
-" set newline characters
-" set ff=(unix|dos)
-
-" scroll multiple windows simultaneously
-" set scrollbind
-" toggle the state of scrollbind
-" set scb!
-
+:nnoremap <C-g> :NERDTreeToggle<CR>
