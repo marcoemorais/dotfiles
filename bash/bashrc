@@ -26,9 +26,9 @@ if echo $MANPATH | grep -vq $HOME/share/man ; then
 fi
 
 # Functions.
-function assh() {
-    # Add a key to ssh-agent.
-    ssh-add ${1:-~/.ssh/*_id_rsa}
+function dr() {
+    # Run docker image with pwd mounted to /src.
+    docker run --rm -it -v $(pwd):/src ${1} /bin/bash
 }
 
 function ft() {
@@ -46,70 +46,24 @@ function fxg() {
     find . -iregex ".*\.${1:txt}$" -exec grep -H --color "${2:-.}" {} \;
 }
 
-function tlx() {
-    # Graphically display directories.
-    # Add (-f) to display full path for each listing.
-    tree -aL ${1:-99} ${2:-}
-}
-
 # Aliases.
-alias cf='clang-format -style=file '
-alias ctop='ctop -i'
-alias ctag='ctags --exclude=.tox --exclude=.venv --exclude=build -f .tags -R .'
-alias dts='date -u +%s'
 alias drmc='docker rm $(docker ps --all --quiet --filter status=exited)'
 alias drmi='docker images -aq -f 'dangling=true' | xargs docker rmi'
-alias drmv='docker volume ls -q -f 'dangling=true' | xargs docker volume rm'
-alias dss='diff --side-by-side --suppress-common-lines --width 200'
-alias essh='eval "$(ssh-agent -s)"'
-alias g='grep --color '
-alias gi='grep --color -i '
-alias gocd='cd $GOPATH'
-alias goenv='echo export GOPATH=$(pwd) >> .envrc && direnv allow .'
-alias gopwd='export GOPATH=$(pwd)'
-alias gotag='gotags -f .tags -R .'
-alias jsonpp='python -msjson.tool'
-alias la='ls -lGa '
-alias lh='ls -lGh '
-alias ll='ls -lG '
-alias py='ping -c 1 www.yahoo.com'
-alias src='. ~/.bashrc'
-alias ssh='TERM=xterm ssh'
-alias tsd='date -ur '
-alias xg='xargs grep --color '
-alias xmlpp='xmllint --format -'
+alias drc10='docker run --rm -it -v $(pwd):/src clang10:local'
+alias drg10='docker run --rm -it -v $(pwd):/src gcc10:local'
+alias dru20='docker run --rm -it -v $(pwd):/src ubuntu20:local'
+alias drvim='docker run --rm -it -v $(pwd):/src vim:local'
+alias la='ls -laG'
+alias ll='ls -lG'
 
 # Set prompt text to blue and prompt to black.
-if [ "x$YROOT_NAME" != "x" ]; then
-    PS1='\[\e[1;34m\]\u@\h ($YROOT_NAME) \W\[\e[0m\]\$ '
-else
-    PS1='\[\e[1;34m\]\u@\h \W\[\e[0m\]\$ '
-fi
+PS1='\[\e[1;34m\]\u@\h \W\[\e[0m\]\$ '
 
 # Golang.
 if [ -d $HOME/go ] ; then
     export GOPATH=$HOME/go
     if echo $PATH | grep -vq $GOPATH ; then
         export PATH=$PATH:$GOPATH/bin
-    fi
-fi
-
-# MacOS.
-if uname | grep -vq "Darwin" ; then
-    # Add some gnu utilities pulled in via brew.
-    if echo $PATH | grep -vq gnubin ; then
-        export PATH=/usr/local/opt/gnu-tar/libexec/gnubin:$PATH
-    fi
-    if echo $MANPATH | grep -vq gnuman ; then
-        export MANPATH=/usr/local/opt/gnu-tar/libexec/gnuman:$MANPATH
-    fi
-fi
-
-# Linux.
-if uname | grep -vq "Linux" ; then
-    # Check and enable the scl.
-    if [ -f /opt/rh/python27/enable ] ; then
-        source /opt/rh/python27/enable
     fi
 fi
 
