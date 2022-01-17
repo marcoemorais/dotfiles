@@ -8,3 +8,4 @@
 .venv
 package-lock.json
 .DS_Store
+tags*
