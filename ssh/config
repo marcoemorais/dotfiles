@@ -1,13 +1,14 @@
-
-User marcomorais
-
 Host *
     AddKeysToAgent yes
-    UseKeychain yes
-    IdentityFile ~/.ssh/marcoemorais_at_yahoo_dot_com_id_rsa
+    ServerAliveInterval 299
+    ServerAliveCountMax 2
 
 Host github.com
     HostName github.com
     User git
     IdentityFile ~/.ssh/marcoemorais_at_yahoo_dot_com_id_rsa
 
+Host gitlab.engr.illinois.edu
+    HostName gitlab.engr.illinois.edu
+    User git
+    IdentityFile ~/.ssh/mmorais2_at_illinois_dot_edu_ed25519
