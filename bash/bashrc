@@ -53,6 +53,8 @@ alias drc10='docker run --rm -it -v $(pwd):/src clang10:local'
 alias drg10='docker run --rm -it -v $(pwd):/src gcc10:local'
 alias dru20='docker run --rm -it -v $(pwd):/src ubuntu20:local'
 alias drvim='docker run --rm -it -v $(pwd):/src vim:local'
+alias gt='go test ./...'
+alias gtv='go test -v ./...'
 alias la='ls -laG'
 alias ll='ls -lG'
 
