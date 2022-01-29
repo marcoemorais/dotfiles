@@ -75,6 +75,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 filetype plugin indent on
 
 " -----------------------------------------------------------------------------
-" Use Ctrl-G to toggle NERDTree.
+" Use Ctrl-g to toggle NERDTree.
 " -----------------------------------------------------------------------------
 :nnoremap <C-g> :NERDTreeToggle<CR>
+
+" -----------------------------------------------------------------------------
+" Use Ctrl-h to toggle Tagbar.
+" -----------------------------------------------------------------------------
+:nnoremap <C-h> :TagbarToggle<CR>

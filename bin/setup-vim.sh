@@ -22,3 +22,6 @@ git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go --branch $VIM
 
 VIM_RIPGREP_TAG=v1.0.3
 git clone https://github.com/jremmen/vim-ripgrep.git ~/.vim/bundle/vim-ripgrep --branch $VIM_RIPGREP_TAG
+
+TAGBAR_TAG=v3.0.0
+git clone https://github.com/preservim/tagbar.git ~/.vim/bundle/tagbar --branch $TAGBAR_TAG
