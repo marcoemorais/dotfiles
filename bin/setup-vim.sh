@@ -25,3 +25,6 @@ git clone https://github.com/jremmen/vim-ripgrep.git ~/.vim/bundle/vim-ripgrep -
 
 TAGBAR_TAG=v3.0.0
 git clone https://github.com/preservim/tagbar.git ~/.vim/bundle/tagbar --branch $TAGBAR_TAG
+
+EDITORCONFIG_TAG=v1.1.1
+git clone https://github.com/editorconfig/editorconfig-vim.git ~/.vim/bundle/editorconfig --branch $EDITORCONFIG_TAG
